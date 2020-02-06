@@ -1,6 +1,36 @@
 import React, { Component } from 'react';
+import { Row, Col, Table } from 'react-bootstrap';
+import './table.css';
+
 
 class CustomerTable extends Component {
+  constructor(props) {
+    super(props);
+
+    let tableRow = []
+
+    createNewRow = () => {
+      for (let i = 0; i < 6; i++) {
+        let data = Math.floor(Math.random() * 200);
+        this.tableRow.push(data);
+      }
+    }
+
+    renderTableRows = () => {
+      this.createNewRow();
+      return (
+        <tr>
+          <td>{tableRow[0]}</td>
+          <td>{tableRow[1]}</td>
+          <td>{tableRow[2]}</td>
+          <td>{tableRow[3]}</td>
+          <td>{tableRow[4]}</td>
+          <td>{tableRow[5]}</td>
+        </tr>
+      )
+    }
+  }
+
   render() {
     return (
       <>
@@ -9,7 +39,6 @@ class CustomerTable extends Component {
             <Table responsive>
               <thead>
                 <tr>
-                  <th>Purchase #</th>
                   <th>Customer 1</th>
                   <th>Customer 2</th>
                   <th>Customer 3</th>
@@ -18,6 +47,9 @@ class CustomerTable extends Component {
                   <th>Customer 6</th>
                 </tr>
               </thead>
+              <tbody>
+                {this.renderTableRows()}
+              </tbody>
             </Table>
           </Col>
         </Row >
